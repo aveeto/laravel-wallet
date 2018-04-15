@@ -77,11 +77,11 @@ trait HasWallet
      * @param  integer $amount
      * @param  string  $type
      * @param  array   $meta
-     * @param  boolean $shouldAccept
+     * @param  boolean $force
      */
-    public function withdraw($amount, $type = 'withdraw', $meta = [], $shouldAccept = true)
+    public function withdraw($amount, $type = 'withdraw', $meta = [], $force = false)
     {
-        $accepted = $shouldAccept ? $this->canWithdraw($amount) : true;
+        $accepted = $force ? true : $this->canWithdraw($amount);
 
         if ($accepted) {
             $this->wallet->balance -= $amount;
@@ -103,11 +103,10 @@ trait HasWallet
      * @param  integer $amount
      * @param  string  $type
      * @param  array   $meta
-     * @param  boolean $shouldAccept
      */
     public function forceWithdraw($amount, $type = 'withdraw', $meta = [])
     {
-        return $this->withdraw($amount, $type, $meta, false);
+        return $this->withdraw($amount, $type, $meta, true);
     }
 
     /**
