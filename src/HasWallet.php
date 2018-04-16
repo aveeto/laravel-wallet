@@ -44,32 +44,18 @@ trait HasWallet
      * @param  string  $type
      * @param  array   $meta
      */
-    public function deposit($amount, $type = 'deposit', $meta = [], $accepted = true)
+    public function deposit($amount, $type = 'deposit', $meta = [])
     {
-        if ($accepted) {
-            $this->wallet->balance += $amount;
-            $this->wallet->save();
-        }
+        $this->wallet->balance += $amount;
+        $this->wallet->save();
 
         $this->wallet->transactions()
-            ->create([
-                'amount' => $amount,
-                'hash' => uniqid('lwch_'),
-                'type' => $type,
-                'accepted' => $accepted,
-                'meta' => $meta
-            ]);
-    }
-
-    /**
-     * Fail to move credits to this account
-     * @param  integer $amount
-     * @param  string  $type
-     * @param  array   $meta
-     */
-    public function failDeposit($amount, $type = 'deposit', $meta = [])
-    {
-        $this->deposit($amount, $type, $meta, false);
+        ->create([
+            'amount' => $amount,
+            'hash' => uniqid('lwch_'),
+            'type' => $type,
+            'meta' => $meta
+        ]);
     }
 
     /**
@@ -77,36 +63,26 @@ trait HasWallet
      * @param  integer $amount
      * @param  string  $type
      * @param  array   $meta
-     * @param  boolean $force
+     * @return boolean
      */
-    public function withdraw($amount, $type = 'withdraw', $meta = [], $force = false)
+    public function withdraw($amount, $type = 'withdraw', $meta = [])
     {
-        $accepted = $force ? true : $this->canWithdraw($amount);
+        $accepted = $this->canWithdraw($amount);
 
         if ($accepted) {
             $this->wallet->balance -= $amount;
             $this->wallet->save();
-        }
-
-        $this->wallet->transactions()
+            
+            $this->wallet->transactions()
             ->create([
                 'amount' => $amount,
                 'hash' => uniqid('lwch_'),
                 'type' => $type,
-                'accepted' => $accepted,
                 'meta' => $meta
             ]);
-    }
+        }
 
-    /**
-     * Move credits from this account
-     * @param  integer $amount
-     * @param  string  $type
-     * @param  array   $meta
-     */
-    public function forceWithdraw($amount, $type = 'withdraw', $meta = [])
-    {
-        return $this->withdraw($amount, $type, $meta, true);
+        return $accepted;
     }
 
     /**
