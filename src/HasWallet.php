@@ -9,7 +9,7 @@ trait HasWallet
      */
     public function getBalanceAttribute()
     {
-        return $this->wallet->balance;
+        return $this->wallet->balance ? $this->wallet->balance : 0;
     }
 
     /**
