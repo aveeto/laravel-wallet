@@ -20,7 +20,6 @@ class CreateWalletTransactionsTable extends Migration
             $table->integer('amount'); // amount is an integer, it could be "dollars" or "cents"
             $table->string('hash', 60); // hash is a uniqid for each transaction
             $table->string('type', 30); // type can be anything in your app, by default we use "deposit" and "withdraw"
-            $table->boolean('accepted'); // All transactions will be added in the book, some can be refused
             $table->json('meta')->nullable(); // Add all kind of meta information you need
 
             $table->timestamps();
