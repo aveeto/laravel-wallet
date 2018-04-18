@@ -1,6 +1,6 @@
 <?php
 
-namespace Depsimon\Wallet;
+namespace Aveeto\Wallet;
 
 use Illuminate\Database\Eloquent\Model;
 
