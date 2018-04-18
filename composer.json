@@ -2,16 +2,22 @@
     "name": "aveeto/laravel-wallet",
     "description": "Easy to use virtual wallet for your app",
     "keywords": [
-        "depsimon",
+        "aveeto",
         "laravel-wallet",
         "virtual",
         "currency",
         "credits",
         "wallet"
     ],
-    "homepage": "https://github.com/depsimon/laravel-wallet",
+    "homepage": "https://github.com/aveeto/laravel-wallet",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Georges Haddad",
+            "email": "prismosoft@gmail.com",
+            "homepage": "https://aveeto.com",
+            "role": "Developer"
+        },
         {
             "name": "Simon Depelchin",
             "email": "simon@webartisan.be",
@@ -25,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Depsimon\\Wallet\\": "src"
+            "Aveeto\\Wallet\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Depsimon\\Wallet\\Tests\\": "tests"
+            "Aveeto\\Wallet\\Tests\\": "tests"
         }
     },
     "config": {
@@ -39,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Depsimon\\Wallet\\WalletServiceProvider"
+                "Aveeto\\Wallet\\WalletServiceProvider"
             ],
             "aliases": {
-                "Wallet": "Depsimon\\Wallet\\WalletFacade"
+                "Wallet": "Aveeto\\Wallet\\WalletFacade"
             }
         }
     }
