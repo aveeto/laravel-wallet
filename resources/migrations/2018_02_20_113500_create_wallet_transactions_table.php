@@ -17,7 +17,7 @@ class CreateWalletTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('wallet_id');
 
-            $table->integer('amount'); // amount is an integer, it could be "dollars" or "cents"
+            $table->decimal('amount', 6, 2)->default(0); // amount is a decimal for money in dollars
             $table->string('hash', 60); // hash is a uniqid for each transaction
             $table->string('type', 30); // type can be anything in your app, by default we use "deposit" and "withdraw"
             $table->json('meta')->nullable(); // Add all kind of meta information you need
