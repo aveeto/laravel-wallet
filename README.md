@@ -8,7 +8,7 @@ This package is a small and simple implementation of this concept with place for
 Install the package with composer:
 
 ```bash
-composer require depsimon/laravel-wallet
+composer require aveeto/laravel-wallet
 ```
 
 ## Run Migrations
@@ -35,7 +35,7 @@ Add the `HasWallet` trait to your User model.
 
 ``` php
 
-use Depsimon\Wallet\HasWallet;
+use Aveeto\Wallet\HasWallet;
 
 class User extends Model
 {
@@ -56,9 +56,6 @@ $user->balance; // 100
 
 $user->withdraw(50);
 $user->balance; // 50
-
-$user->forceWithdraw(200);
-$user->balance; // -150
 ```
 
 You can easily add meta information to the transactions to suit your needs.
@@ -71,10 +68,10 @@ $user->withdraw(10, 'withdraw', ['description' => 'Purchase of Item #1234']);
 
 ### Security
 
-If you discover any security related issues, please email simon@webartisan.be instead of using the issue tracker.
+If you discover any security related issues, please email prismosoft@gmail.com instead of using the issue tracker.
 
 ## Credits
-
+- [Georges Haddad](https://github.com/aveeto)
 - [Simon Depelchin](https://github.com/depsimon)
 
 ## License
