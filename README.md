@@ -16,7 +16,7 @@ composer require aveeto/laravel-wallet
 Publish the migrations with this artisan command:
 
 ```bash
-php artisan vendor:publish --provider="Depsimon\Wallet\WalletServiceProvider" --tag=migrations
+php artisan vendor:publish --provider="Aveeto\Wallet\WalletServiceProvider" --tag=migrations
 ```
 
 ## Configuration
@@ -24,7 +24,7 @@ php artisan vendor:publish --provider="Depsimon\Wallet\WalletServiceProvider" --
 You can publish the config file with this artisan command:
 
 ```bash
-php artisan vendor:publish --provider="Depsimon\Wallet\WalletServiceProvider" --tag=config
+php artisan vendor:publish --provider="Aveeto\Wallet\WalletServiceProvider" --tag=config
 ```
 
 This will merge the `wallet.php` config file where you can specify the Users, Wallets & Transactions classes if you have custom ones.
