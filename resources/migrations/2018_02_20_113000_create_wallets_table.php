@@ -19,7 +19,7 @@ class CreateWalletsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger($userClass->getForeignKey())->nullable();
 
-            $table->bigInteger('balance');
+            $table->decimal('balance', 6, 2)->default(0);
 
             $table->timestamps();
 
